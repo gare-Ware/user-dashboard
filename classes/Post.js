@@ -1,3 +1,4 @@
+const inputContainer = document.getElementById('input-container')
 const postsContainer = document.getElementById('posts-container')
 
 class Post {
@@ -14,15 +15,39 @@ class Post {
 
     static renderUserPosts(user) {
         const selectedUserPosts = Post.all.filter(post => post.userId === user.id)
-        postsContainer.innerHTML = selectedUserPosts.map(post => {
-            return `
-                <div>
-                    <h1>${post.title}</h1>
-                    <h3>by: ${user.username}</h3>
-                    <p>${post.body}</p>
-                </div>
-            `
-        }).join('')
+        inputContainer.innerHTML = `
+            <div class='post-filter'>
+                <h1>${user.name}'s Post History</h1>
+                <label for="post-filter">
+                    <input id="post-filter-input" type="text" name="post-filter" placeholder="filter posts">
+                </label>
+            </div>
+        `
+        const renderPosts = posts => {
+            postsContainer.innerHTML = posts.map(post => {
+                return `
+                    <div>
+                        <h1>${post.title}</h1>
+                        <h3>by: ${user.username}</h3>
+                        <p>${post.body}</p>
+                    </div>
+                `
+            }).join('')
+        }
+
+        renderPosts(selectedUserPosts)
+
+        const filterInput = document.getElementById('post-filter-input')
+        filterInput.addEventListener("keydown", e => {
+            e.preventDefault()
+            e.key === "Backspace"
+            ? filterInput.value = filterInput.value.slice(0, -1)
+            : filterInput.value += e.key
+            console.log(e.key)
+            console.log(filterInput.value)
+            const filteredPosts = selectedUserPosts.filter(post => post.title.includes(filterInput.value))
+            renderPosts(filteredPosts)
+        })
     }
 
 }

@@ -7,8 +7,8 @@ class User {
         const { id, name, username, email, phone, website } = user
         this.id = id
         this.name = name
-        this.username = username
-        this.email = email
+        this.username = username.toLowerCase()
+        this.email = email.toLowerCase()
         this.phone = phone
         this.website = website
         User.all = [...User.all, this]
@@ -26,13 +26,13 @@ class User {
                 </tr>
                 ${User.all.map(user => {
                     return `
-                            <tr>
-                                <td id=${user.id} >${user.name}</td>
-                                <td>${user.username}</td>
-                                <td>${user.email}</td>
-                                <td>${user.phone}</td>
-                                <td>${user.website}</td>
-                            </tr>
+                        <tr>
+                            <td id=${user.id} >${user.name}</td>
+                            <td>@${user.username}</td>
+                            <td>${user.email}</td>
+                            <td>${user.phone}</td>
+                            <td>${user.website}</td>
+                        </tr>
                         `
                 }).join('')}
             </table>

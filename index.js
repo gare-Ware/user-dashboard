@@ -12,12 +12,11 @@ const fetchPosts = () => {
         .then(data => data.map(post => new Post(post)))
 }
 
-
-const run = async () => {
+const start = async () => {
     await fetchUsers()
     await fetchPosts()
     User.renderAllUsers()
 }
 
-run()
+start()
 
