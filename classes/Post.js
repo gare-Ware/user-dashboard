@@ -4,8 +4,8 @@ class Post {
     static all = []
 
     constructor(post) {
-        const { userid, id, title, body } = post
-        this.userid = userid
+        const { userId, id, title, body } = post
+        this.userId = userId
         this.id = id
         this.title = title
         this.body = body
@@ -13,8 +13,7 @@ class Post {
     }
 
     static renderUserPosts(user) {
-        const selectedUserPosts = Post.all.filter(post => user.id === post.userid)
-        postsContainer.innerHTML = 'test'
+        const selectedUserPosts = Post.all.filter(post => post.userId === user.id)
         postsContainer.innerHTML = selectedUserPosts.map(post => {
             return `
                 <div>
