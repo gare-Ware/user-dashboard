@@ -85,6 +85,12 @@ table tr td:nth-child(1):active {
     color: var(--teal-4);
 }
 
+.selectedUser {
+    background-color: var(--white);
+    color: var(--teal-3);
+    border-radius: 5px;
+}
+
 .post-filter {
     display: flex;
     justify-content: center;

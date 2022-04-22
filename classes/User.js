@@ -39,9 +39,14 @@ class User {
         `
 
          for(let user of User.all){
-             document.getElementById(user.id).onclick = () => {
+             const anyUser = document.getElementById(user.id)
+             anyUser.onclick = () => {
                 Post.renderUserPosts(user)
                 window.location.href = "#input-container"
+                for(let i of User.all){
+                    document.getElementById(i.id).classList.remove("selectedUser")
+                }
+                anyUser.classList.add("selectedUser")
              }
          }
     }
