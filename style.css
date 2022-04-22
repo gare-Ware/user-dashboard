@@ -1,8 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 *, *::before, *::after {
     box-sizing: border-box;
 }
 
+html {
+    --teal-1: #004d40;
+    --teal-2: #00695c;
+    --teal-3: #00796b;
+    --teal-4: #00897b;
+    --white: #fafafa;
+    --gray-white: #dddddd;
+    font-family: 'Roboto', sans-serif;
+    scroll-behavior: smooth;
+    scroll-padding-top: 20px;
+}
+
 body {
-    background-color: #252525;
-    color: #fafafa;
+    background-color: var(--teal-1);
+    color: var(--white);
+    margin: 0;
+}
+
+.container {
+    max-width: 1050px;
+}
+
+#table-container {
+    overflow: scroll;
+    padding: 1.5em .5em;
+}
+
+#posts-container {
+    min-height: 100vh;
+}
+
+body .container > h1 {
+    padding-left: .5em;
+    margin-bottom: 0;
+}
+
+table {
+    background-color: var(--teal-3);
+    border-radius: 10px;
+    border-collapse: collapse;
+    text-align: left;
+    overflow: scroll;
+    box-shadow: #00000059 0px 5px 15px; 
+}
+
+th {
+    background-color: var(--teal-2);
+    text-transform: uppercase;
+    letter-spacing: .5px;
+}
+
+tr:nth-child(even) {
+    background-color: var(--teal-4);
+}
+
+td, th {
+    padding: 10px 0 10px 15px;
+    min-width: 205px;
+}
+
+table tr th:nth-of-type(1) {
+    border-radius: 10px 0 0 0;
+}
+  
+table tr th:nth-last-of-type(1) {
+    border-radius: 0 10px 0 0;
+}
+table tr td:nth-child(1) {
+    cursor: pointer;
+}
+table tr td:nth-child(1):hover {
+    background-color: var(--white);
+    color: var(--teal-3);
+    border-radius: 5px;
+}
+
+table tr td:nth-child(1):active {
+    background-color: var(--gray-white);
+    color: var(--teal-4);
+}
+
+.post-filter {
+    display: flex;
+    justify-content: center;
+}
+.post-filter input {
+    display: block;
+    border: none;
+    padding: .5em;
+    font-size: inherit;
+    background-color: inherit;
+    border-bottom: 2px solid var(--teal-4);
+    text-align: center;
+    margin-bottom: 1.5em;
+    outline: none;
+    color: var(--white);
+}
+
+::placeholder {
+    color: var(--gray-white);
+    opacity: .8;
+}
+
+.post {
+    background-color: var(--teal-2);
+    padding: 1em;
+    margin: 0 .5em 1.5em .5em;
+    border-radius: 10px;
+    box-shadow: #00000059 0px 5px 15px;
+}
+
+.post h3 {
+    font-size: 1rem;
+}
+
+.post h3, .post p {
+    color: var(--gray-white);
+}
+
+.post p {
+    line-height: 1.4
+}
+
+@media (min-width: 1050px){
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }

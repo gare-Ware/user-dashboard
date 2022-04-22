@@ -41,6 +41,7 @@ class User {
          for(let user of User.all){
              document.getElementById(user.id).onclick = () => {
                 Post.renderUserPosts(user)
+                window.location.href = "#input-container"
              }
          }
     }

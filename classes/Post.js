@@ -17,18 +17,17 @@ class Post {
         const selectedUserPosts = Post.all.filter(post => post.userId === user.id)
         inputContainer.innerHTML = `
             <div class='post-filter'>
-                <h1>${user.name}'s Post History</h1>
                 <label for="post-filter">
-                    <input id="post-filter-input" type="text" name="post-filter" placeholder="filter posts">
+                    <input id="post-filter-input" type="text" name="post-filter" placeholder="filter posts by title">
                 </label>
             </div>
         `
         const renderPosts = posts => {
             postsContainer.innerHTML = posts.map(post => {
                 return `
-                    <div>
-                        <h1>${post.title}</h1>
-                        <h3>by: ${user.username}</h3>
+                    <div class='post'>
+                        <h2>${post.title}</h1>
+                        <h3>@${user.username}</h3>
                         <p>${post.body}</p>
                     </div>
                 `
@@ -36,15 +35,12 @@ class Post {
         }
 
         renderPosts(selectedUserPosts)
-
         const filterInput = document.getElementById('post-filter-input')
         filterInput.addEventListener("keydown", e => {
             e.preventDefault()
             e.key === "Backspace"
             ? filterInput.value = filterInput.value.slice(0, -1)
             : filterInput.value += e.key
-            console.log(e.key)
-            console.log(filterInput.value)
             const filteredPosts = selectedUserPosts.filter(post => post.title.includes(filterInput.value))
             renderPosts(filteredPosts)
         })
